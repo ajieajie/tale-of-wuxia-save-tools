@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>侠客风云传前传 · 全奖励不遗漏时间线攻略</title>
+<style>
+  :root {
+    --bg: #faf9f6;
+    --card: #ffffff;
+    --border: #e5e0d8;
+    --text: #2c2416;
+    --muted: #8b7355;
+    --accent: #c0392b;
+    --accent2: #2980b9;
+    --gold: #b8860b;
+    --warn: #e74c3c;
+    --tag-main: #c0392b;
+    --tag-side: #8e44ad;
+    --tag-miss: #e67e22;
+    --tag-recruit: #27ae60;
+    --tag-item: #2980b9;
+    --phase-bg: #f5f0e8;
+    --highlight: #fff3cd;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "Microsoft YaHei", "PingFang SC", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+    padding: 20px;
+  }
+  .container { max-width: 960px; margin: 0 auto; }
+
+  h1 {
+    text-align: center;
+    font-size: 2em;
+    padding: 30px 0 10px;
+    color: var(--accent);
+    letter-spacing: 2px;
+  }
+  .subtitle {
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.95em;
+    margin-bottom: 30px;
+  }
+
+  /* Legend */
+  .legend {
+    display: flex; gap: 16px; flex-wrap: wrap;
+    justify-content: center; margin-bottom: 30px;
+    padding: 14px; background: var(--card);
+    border-radius: 10px; border: 1px solid var(--border);
+  }
+  .legend span { font-size: 0.85em; display: flex; align-items: center; gap: 6px; }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.8em; color: #fff; white-space: nowrap; }
+  .tag.m  { background: var(--tag-main); }
+  .tag.s  { background: var(--tag-side); }
+  .tag.r  { background: var(--tag-recruit); }
+  .tag.i  { background: var(--tag-item); }
+  .tag.x  { background: var(--tag-miss); }
+
+  /* Phase */
+  .phase {
+    background: var(--phase-bg);
+    border-left: 5px solid var(--accent);
+    padding: 16px 20px;
+    margin: 30px 0 14px;
+    border-radius: 0 10px 10px 0;
+  }
+  .phase h2 { font-size: 1.3em; color: var(--accent); }
+  .phase .desc { color: var(--muted); font-size: 0.9em; margin-top: 4px; }
+
+  /* Cards */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin-bottom: 14px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .card h3 { font-size: 1.05em; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .card .info { color: var(--muted); font-size: 0.88em; }
+  .card .reward {
+    background: #f0f9ff;
+    border-left: 3px solid var(--accent2);
+    padding: 8px 12px;
+    margin-top: 8px;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.88em;
+  }
+  .card .reward strong { color: var(--accent2); }
+  .card.missable {
+    background: #fffdf5;
+    border-color: var(--tag-miss);
+  }
+  .card.missable .reward {
+    background: #fff8ee;
+    border-left-color: var(--tag-miss);
+  }
+  .card.missable .reward strong { color: var(--tag-miss); }
+
+  .warning {
+    background: var(--highlight);
+    border: 1px solid #ffc107;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 10px 0;
+    font-size: 0.9em;
+    color: #856404;
+  }
+  .warning::before { content: "⚠️ "; font-size: 1.1em; }
+
+  hr { border: none; border-top: 1px dashed var(--border); margin: 20px 0; }
+
+  .toc { 
+    background: var(--card); border: 1px solid var(--border); 
+    border-radius: 10px; padding: 20px; margin-bottom: 30px;
+  }
+  .toc h3 { margin-bottom: 10px; }
+  .toc ol { padding-left: 20px; }
+  .toc li { margin: 3px 0; font-size: 0.9em; }
+  .toc a { color: var(--accent2); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+
+  .priority-box {
+    background: linear-gradient(135deg, #fff3cd, #ffe69c);
+    border: 2px solid var(--accent);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin: 20px 0;
+  }
+  .priority-box h3 { color: var(--accent); margin-bottom: 8px; }
+  .priority-box ul { padding-left: 20px; font-size: 0.9em; }
+  .priority-box li { margin: 4px 0; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>⚔️ 侠客风云传前传</h1>
+<p class="subtitle">全奖励不遗漏 · 最佳时间线攻略 · v1.0</p>
+
+<!-- Legend -->
+<div class="legend">
+  <span><span class="tag m">主线</span> 必须推进</span>
+  <span><span class="tag s">支线</span> 可获取奖励</span>
+  <span><span class="tag r">招募</span> 队友入队</span>
+  <span><span class="tag i">物品</span> 关键道具/秘籍</span>
+  <span><span class="tag x">易错过</span> 时机敏感，错过不再</span>
+</div>
+
+<!-- TOC -->
+<div class="toc">
+  <h3>📑 目录</h3>
+  <ol>
+    <li><a href="#p0">序章 · 逍遥谷</a></li>
+    <li><a href="#p1">第一阶段 · 弦剑山庄 & 洛阳</a></li>
+    <li><a href="#p2">第二阶段 · 三派拜访 & 黑蝠洞线</a></li>
+    <li><a href="#p3">第三阶段 · 无名冢线</a></li>
+    <li><a href="#p4">第四阶段 · 赛王府线</a></li>
+    <li><a href="#p5">第五阶段 · 血色姻缘 & 恶人谷</a></li>
+    <li><a href="#p6">第六阶段 · 绿柳山庄 & 终章</a></li>
+    <li><a href="#p7">🗺️ 大地图随机事件</a></li>
+  </ol>
+</div>
+
+<!-- Priority Box -->
+<div class="priority-box">
+  <h3>🔑 十大必须注意的易错过内容</h3>
+  <ul>
+    <li><strong>1.</strong> 无名冢杀傀尸前 → 必须先去杭州触发"小孩见僵尸"（否则无法招募楚绘）</li>
+    <li><strong>2.</strong> 杭州找龙墨前 → 必须完成洛阳客栈小孟支线（带沈湘云）</li>
+    <li><strong>3.</strong> 赛王府杀小王爷前 → 收集4张先天功残页（否则永远拿不到先天功）</li>
+    <li><strong>4.</strong> 赛王府 → 队伍必带史燕（偷软猬甲/黑玉镯/铁罗汉）</li>
+    <li><strong>5.</strong> 山林地堡 → 必带岳胖子且内功满级（否则无法触发完美结局）</li>
+    <li><strong>6.</strong> 恶人谷任务 → 尽快清完，花族拜火大典后会被清除</li>
+    <li><strong>7.</strong> 雪地野店 → 先在华山拿冲灵残页，铸剑山庄合成冲灵剑法，再去</li>
+    <li><strong>8.</strong> 修罗宫开放期间 → 带沈湘云找洛翎枫触发小孟后续</li>
+    <li><strong>9.</strong> 救阿修罗 → 不杀赵龙！不杀赵龙！（否则夜叉不入队）</li>
+    <li><strong>10.</strong> 所有支线 → 燕宇入队后再做（阅历翻倍）</li>
+  </ul>
+</div>
+
+<!-- ======================== PHASE 0 ======================== -->
+<div class="phase" id="p0">
+  <h2>📌 序章 · 逍遥谷</h2>
+  <p class="desc">初始选择 → 出谷前准备</p>
+</div>
+
+<div class="card">
+  <h3><span class="tag m">主线</span> 初始选择</h3>
+  <div class="info">选 <strong>天龙教</strong> → 谷月轩「并肩作战」+ 荆棘「唯我独尊」（推荐）<br>
+  选 <strong>酆都</strong> → 谷月轩「惺惺相惜」+ 荆棘「以眼还眼」</div>
+  <div class="reward"><strong>🎁 天赋获得</strong>（建议打赢，否则缺初始天赋）</div>
+</div>
+
+<div class="card">
+  <h3><span class="tag m">主线</span> 老胡的心意</h3>
+  <div class="info">北边上山找老胡 → 荆棘 1v1 老胡</div>
+  <div class="reward"><strong>🎁</strong> 八方藏刀式精要、藤甲、小还丹、阅历</div>
+</div>
+
+<div class="card missable">
+  <h3><span class="tag s">支线</span> <span class="tag x">易错过</span> 喂猫换智慧果</h3>
+  <div class="info">出谷前去有猫的房间，用咸鱼喂猫。<br>
+  选项3「一本破烂的书」→ <strong>仙音乐集</strong>（必换！触发主线-遗失的乐集）<br>
+  其余全部选选项1 → <strong>智慧果</strong>（弦箫谷种地用，至少留1个）</div>
+  <div class="reward"><strong>⚠️ 必拿：</strong>仙音乐集（否则主线卡关）+ 智慧果（种地得9个）</div>
+</div>
+
+<div class="card">
+  <h3><span class="tag s">支线</span> 队友入队后找老胡</h3>
+  <div class="info">每入队一个新队友，对话老胡 → 获得<strong>觥筹交错组</strong>（杭州城设宴加全队经验）</div>
+</div>
+
+<!-- ======================== PHASE 1 ======================== -->
+<div class="phase" id="p1">
+  <h2>📌 第一阶段 · 弦剑山庄 & 洛阳</h2>
+  <p class="desc">弦剑山庄灭门 → 弦箫洞追凶 → 洛阳白马寺</p>
+</div>
+
+<div class="card">
+  <h3><span class="tag m">主线</span> 驰援弦剑山庄</h3>
+  <div class="info">多打小怪刷传闻，主角内功到7级再打BOSS。一路向山上走。</div>
+  <div class="reward"><strong>🎁</strong> 黑天、十全大补丹、千年人参</div>
+</div>
+
+<div class="card">
+  <h3><span class="tag m">主线</span> 调查弦箫洞</h3>
+  <div class="info">左侧隐藏水路探索。调查古琴，选「高山流水」。<br>
+  解密顺序：<strong>宫 → 徵 → 羽 → 商 → 角</strong><br>
+  💡 建议先答错 → 荆棘去瀑布听3次 → 阅历+1</div>
+  <div class="reward"><strong>🎁</strong> 萧复入队</div>
+</div>
+
+<div class="card">
+  <h3><span class="tag i">物品</span> 弦箫洞河道捕鱼</h3>
+  <div class="info">出弦箫幽谷后回来捡：草鱼×5（支线用）、神鱼×1、虹鲤×1（虹鲤三鲜面支线）</div>
+  <div class="reward"><strong>🎁</strong> 草鱼、神鱼、虹鲤、咸鱼×7</div>
+</div>
+
+<div class="card">
+  <h3><span class="tag m">主线</span> 弦箫幽谷种智慧果</h3>
+  <div class="info">首次进图收获白菜后 → 智慧果滚到地上 → 可种出<strong>9个新智慧果</strong>。<br>
+  可以反复种植（注意传闻：金翅鸟/天黑会偷吃，可SL）</div>
+</div>
+
+<div class="card">
+  <h3><span class="tag m">主线</span> 弦箫洞 BOSS 战</h3>
+  <div class="info">攻击顺序：银尸 → 铁尸 → 傀尸。第3回合萧复触发增益，第4回合谷月轩剧情。</div>
+  <div class="reward"><strong>🎁</strong> 牛黄血竭丹×3</div>
+</div>
+
+<hr>
+
+<!-- 洛阳城 -->
+<div class="card">
+  <h3><span class="tag m">主线</span> 洛阳白马寺</h3>
+  <div class="info">回答问题：「弃恶从善，即可成佛」「一切种种皆为我执」「心无罣碍，自然妄念不生」</div>
+  <div class="reward"><strong>🎁</strong> 禅宗莲华功、江瑜入队</div>
+</div>
+
+<div class="card missable">
+  <h3><span class="tag s">支线</span> <span class="tag x">易错过</span> 洛���四大时效任务</h3>
+  <div class="info"><strong>进洛阳立刻触发！</strong>否则后续无法完成：<br>
+  ① 关伟撞人事件<br>② 监狱道人问斩事件<br>③ 郊外猎人被鹰啄事件<br>④ 菜篮大盗事件</div>
+</div>
+
+<div class="card">
+  <h3><span class="tag s">支线</span> 洛阳各支线（燕宇入队前先不做！）</h3>
+  <div class="info">⚠️ <strong>先去青城派招燕宇</strong>（阅历翻倍），再回来清洛阳支线：<br>
+  · 城门守卫 → 三次拒绝收钱 → 荆棘 1v1 赵龙 → 十全大补丹<br>
+  · 白马寺小孩 → 给小白豆浆 → 阅历+1<br>
+  · 面摊姜望答题 → 答案 21443 → 悟性+1<br>
+  · 沈湘云+古董门外老奶奶 → 买虹鲤 → 找鲤鱼王→客栈厨房→故意战败 → 迅雷剑法<br>
+  · 酒馆王小余 → 河洛客栈老杜 → 罗煞分舵大战 → 阅历+5、神鱼<br>
+  · 擂台解散（沈湘云在队）<br>
+  · 地下赌场 → 选溪山行旅图 → 交给书画商人<br>
+  · 收集7尾草鱼给鱼贩 → 鱼的雕像<br>
+  · 天剑门小师弟 → 鼓励→托6回合→西门峰→义正词严<br>
+  · 施舍乞丐1000两 → 狗皮膏药 → 交驿站伙计 → 千锤百炼丹+连城剑法精要<br>
+  · 地牢叶半仙 → 选斩首 → 郊外再遇 → 蟹的雕像<br>
+  · 江瑜在队 → 拾取江天雄身后<strong>拜月七绝</strong>（书架）<br>
+  · 江瑜在队 → 找江天雄切磋两次 → 地煞无极功 → 苍天有极<br>
+  · 蜈蚣给野鸡店老板 → 桂圆红枣鸡汤<br>
+  · 酒馆紫衣秃头 → 荆棘 vs 傅剑寒 → 大金刚掌法精要</div>
+</div>
+
+<!-- ======================== PHASE 2 ======================== -->
+<div class="phase" id="p2">
+  <h2>📌 第二阶段 · 三派拜访 & 黑蝠洞线</h2>
+  <p class="desc">少林 → 武当 → 华山 → 龙井村 → 南少林 → 毒龙教 → 黑蝠洞</p>
+</div>
+
+<div class="card">
+  <h3><span class="tag r">招募</span> 先去青城派招燕宇！</h3>
+  <div class="info">青城派 → 与燕宇交谈 → 荆棘对战燕宇 → <strong>燕宇入队</strong><br>
+  ⚠️ 之后所有支线奖励阅历翻倍！<br>
+  右侧青城门人 → 归还华山玉佩 → 灵飞经</div>
+  <div class="reward"><strong>🎁</strong> 燕宇入队 + 天山幻影剑精要 + 灵飞经</div>
+</div>
+
+<div class="card">
+  <h3><span class="tag m">主线</span> 少林寺</h3>
+  <div class="info">对话无因方丈</div>
+  <div class="reward"><strong>🎁</strong> 达摩像</div>
+</div>
+
+<div class="card">
+  <h3><span class="tag s">支线</span> 少林寺支线</h3>
+  <div class="info">
+  · 扫地小和尚 → 答 26 阶 → 阅历+1<br>
+  · 史燕在队 → 右侧角落两铜人对话（后续萧复+水盼盼剧情）<br>
+  · 左侧第二个和尚 → 龙井村送信给王思思 → 大须弥山棍精要<br>
+  · 左上拿棍和尚 → 喀什沙漠救徒弟 → 金刚不坏体<br>
+  · 无色方丈 → 打罗汉阵（救不回不动后去南少林挑战）<br>
+  · 史燕在队 + 萧复 + 水盼盼 → 两铜人说抓狗男女 → <strong>百鸟朝凤曲</strong> → 打赢十八铜人 → <strong>罗汉伏魔棍</strong><br>
+  · 谷月轩大金刚掌10级 → 右上木桩和尚 → 蛙雕像+洗髓再造丹<br>
+  · 山门守卫 → 少林防卫战 → 无相劫指
+  </div>
+</div>
+
+<div class="card">
+  <h3><span class="tag m">主线</span> 武当山</h3>
+  <div class="info">对话卓人清</div>
+  <div class="reward"><strong>🎁</strong> 三黄宝腊丹×3、梯云踪</div>
+</div>
+
+<div class="card">
+  <h3><span class="tag s">支线</span> 武当支线</h3>
+  <div class="info">
+  · 左侧李昭庆 → 景阳冈送信给黄化天 → 劈卦神拳精要+紫薇软剑<br>
+  · 右下武当弟子 → 森林杀马猴 → 龙泣剑精要<br>
+  · 右上武当弟子 → 要苗疆美酒 → 毒龙教小阿曼酿制<strong>五宝花蜜酒×3</strong> → 倚天屠龙功<br>
+  · 古实九阳功练好 → 对话古叶 → 太极神功 → 第二次得开太极<br>
+  · 古实武功精进后 → 对话古叶→洛阳古玩店老板→矿场工头→洛阳郊外小孩 → <strong>太极图</strong>（古实专属，气血+1000）<br>
+  · 杭州事件后 → 古实触发方云华失踪 → 成都破庙救方云华（需要史燕在队）
+  </div>
+</div>
+
+<div class="card">
+  <h3><span class="tag m">主线</span> 华山派</h3>
+  <div class="info">对话曹睿</div>
+  <div class="reward"><strong>🎁</strong> 连山决 或 正气诀</div>
+</div>
+
+<div class="card">
+  <h3><span class="tag s">支线</span> 华山支线</h3>
+  <div class="info">
+  · 调查坐垫 → 玉佩（拿回青城派换灵飞经）<br>
+  · 左上曹萼华剧情 → 凉亭 → <strong>呕血谱</strong>（赠橘叟换秘籍）<br>
+  · 岳胖子在队 → 调查大厅右侧书架 → <strong>无双无对精要</strong><br>
+  · 左侧凉亭 → 冲灵残页（后续铸剑山庄合成冲灵剑法）<br>
+  · 调查华山门人对话 → 谷月轩对战 → 冲灵剑法
+  </div>
+</div>
+
+<div class="card">
+  <h3><span class="tag r">招募</span> 铸剑山庄 — 任剑南入队</h3>
+  <div class="info">前往铸剑山庄 → 剧情后任剑南加入</div>
+  <div class="reward"><strong>🎁</strong> 琼华剑、清风剑</div>
+</div>
+
+<div class="card">
+  <h3><span class="tag r">招募</span> 森林 — 史燕入队</h3>
+  <div class="info">前往森林 → 对战郝虎、巴龙 → 花10000两 → 史燕入队</div>
+  <div class="reward"><strong>🎁</strong> 烟雾弹制作法</div>
+</div>
+
+<div class="card">
+  <h3><span class="tag m">主线</span> 洛阳江府 — 接主线任务</h3>
+  <div class="info">对话江天雄 → 接到龙井村灵异事件</div>
+</div>
+
+<div class="card">
+  <h3><span class="tag m">主线</span> 龙井村 — 救孟婆（黑蝠洞线①）</h3>
+  <div class="info">龙井村 → 井边接救孟婆任务 → 少林寺 → 南少林防卫战 → 大地图南少林西南找袈裟 → 原始森林救不动</div>
+</div>
+
+<div class="card">
+  <h3><span class="tag r">招募</span> 南少林 — 不动入队</h3>
+  <div class="info">带不动、古实、水盼盼三人去龙井村救孟婆 → 黑蝠洞解锁</div>
+</div>
+
+<div class="card">
+  <h3><span class="tag m">主线</span> 毒龙教 — 小阿曼入队（黑蝠洞线②）</h3>
+  <div class="info">毒龙教防卫战 → 劝说铁叉部 → 找蓝婷接千年毒蟾任务 → 成都酒店小二 → 乐山大佛击败毒 → 小阿曼入队</div>
+</div>
+
+<div class="card">
+  <h3><span class="tag r">招募</span> 成都 — 水盼盼入队</h3>
+  <div class="info">入城荆棘要吃饭 → 客栈找小二 → 荆棘 1v1 水盼盼 → 水盼盼入队</div>
+</div>
+
+<div class="card">
+  <h3><span class="tag s">支线</span> 成都支线</h3>
+  <div class="info">
+  · 卖肉的给熊掌 → 大王蛇胆<br>
+  · 少女猜谜（一条鞭法/烧饼歌/阳明/知行合一/鄱阳湖） → 明光甲<br>
+  · 前街最里面给狗包子 → 跟着狗走 → 开启杭州分舵线索<br>
+  · 一袋脏物交官府 → 阅历+5<br>
+  · 年芙蓉对话 → 庖丁解牛<br>
+  · 茶摊落魄书生 → 市集面摊找书→给老板10药草 → 武林群侠传<br>
+  · 百草门前小女孩 → 给西湖醋鱼+东坡肉 → 虎鹤双形腿<br>
+  · 背柴居民要珍珠 → 乐山大佛右侧拾取珍珠 → 兽王戒
+  </div>
+</div>
+
+<div class="card">
+  <h3><span class="tag m">主线</span> 黑蝠洞 — 斩杀欧阳笑</h3>
+  <div class="info">⚠️ 前提：完成黑蝠洞线①②，小阿曼在队<br>
+  带小阿曼进入黑蝠洞 → 斩杀欧阳笑 → <strong>主线①完成</strong></div>
+</div>
+
+<!-- ======================== PHASE 3 ======================== -->
+<div class="phase" id="p3">
+  <h2>📌 第三阶段 · 无名冢线</h2>
+  <p class="desc">忘忧谷萧复 → 兽王庄纪玟 → 乐山大佛 → 无名冢</p>
+</div>
+
+<div class="card">
+  <h3><span class="tag m">主线</span> 忘忧谷 — 探望萧复</h3>
+  <div class="info">忘忧谷探望萧复 → 回庄对话萧复 → 萧复入魔 → 森林遇剑南</div>
+</div>
+
+<div class="card">
+  <h3><span class="tag s">支线</span> 忘忧谷支线</h3>
+  <div class="info">
+  · 送呕血谱给橘叟 → 对战橘叟 → 满天花雨<br>
+  · 酒仙谜题 → 按诗句对应棋书琴画 → 醉拳 + 酒仙葫芦<br>
+  · 将仙音乐谱还仙音 → 前往弦剑山庄
+  </div>
+</div>
+
+<div class="card missable">
+  <h3><span class="tag s">支线</span> <span class="tag x">易错过</span> 杭州 — 触发夜飘香前置！</h3>
+  <div class="info">⚠️ <strong>去无名冢杀傀尸之前，必须先触发！</strong><br>
+  杭州 → 触发「小孩见僵尸」事件 → 这是楚绘（夜飘香）入队的前置</div>
+  <div class="warning">如果先杀了无名冢傀尸再来杭州，此任务永久关闭！</div>
+</div>
+
+<div class="card">
+  <h3><span class="tag m">主线</span> 兽王庄 — 救纪玟</h3>
+  <div class="info">带沈湘云去兽王庄 → 纪玟中毒 → 东渡口码头出海 → 藏海岛采海藏花 → 回兽王庄救人</div>
+</div>
+
+<div class="card">
+  <h3><span class="tag s">支线</span> 兽王庄支线</h3>
+  <div class="info">
+  · 身上带咸鱼 → 鳄鱼池 → 鳄鱼皮甲<br>
+  · 身上带玉蜂浆 → 熊园喂食 → 兽王功<br>
+  · 再喂咸鱼 → 对战挑嘴熊 → 千年人参<br>
+  · 岳胖子在队 → 调查大厅桌上秘籍 → 银蛇千转精要
+  </div>
+</div>
+
+<div class="card">
+  <h3><span class="tag s">支线</span> 乐山大佛支线</h3>
+  <div class="info">
+  · 交出漂亮石头给菜园和尚 → 观音明心鼎<br>
+  · 把米给小和尚 → 药王神篇<br>
+  · 跟虚真交谈 → 大地图救三个和尚 → 达摩武经精要<br>
+  · 凌云窟对战银尸+傀尸
+  </div>
+</div>
+
+<div class="card">
+  <h3><span class="tag m">主线</span> 无名冢 — 斩杀傀尸</h3>
+  <div class="info">乐山大佛凉亭 → 凌云窟 → 无名冢解锁<br>
+  无名冢路口左拐 → 左侧土地庙触发机关 → 对话岳胖子</div>
+  <div class="reward"><strong>🎁 四选一：</strong>东方宝典 / 魔刀七杀 / 天魔解体（推荐）/ 日月天魔鞭</div>
+</div>
+
+<div class="card">
+  <h3><span class="tag r">招募</span> 无名冢 — 岳胖子入队</h3>
+  <div class="info">再次进入无名冢，右上角招募岳胖子。<br>
+  带岳胖子去华山大厅右侧书架 → 无双无对精要<br>
+  带岳胖子去兽王庄大厅桌子 → 银蛇千转精要</div>
+</div>
+
+<div class="card">
+  <h3><span class="tag r">招募</span> 楚绘入队</h3>
+  <div class="info">完成杭州夜飘香前置 + 无名冢傀尸后 → 白马寺触发楚绘剧情 → 楚绘入队</div>
+</div>
+
+<div class="card">
+  <h3><span class="tag r">招募</span> 杜康村 — 傅剑寒入队</h3>
+  <div class="info">杜康村一系列支线后 → 夜闯钱府 → 傅剑寒入队</div>
+</div>
+
+<div class="card">
+  <h3><span class="tag r">招募</span> 八卦门 — 商仲仁入队</h3>
+  <div class="info">八卦门 → 成都百草门 → 东渡口打听 → 揭穿商仲智 → 商仲仁入队<br>
+  商仲仁在队 → 调查左侧柜子 → 鹰爪功<br>
+  商仲仁在队 → 对话商鹤鸣 → 八卦乱环式精要</div>
+</div>
+
+<!-- ======================== PHASE 4 ======================== -->
+<div class="phase" id="p4">
+  <h2>📌 第四阶段 · 赛王府线</h2>
+  <p class="desc">雪地野店 → 赛王府 → 丐帮血案</p>
+</div>
+
+<div class="card missable">
+  <h3><span class="tag s">支线</span> <span class="tag x">易错过</span> 冲灵剑法 + 雪地野店准备</h3>
+  <div class="info">
+  ⚠️ <strong>去雪地野店之前必须完成：</strong><br>
+  ① 华山派左侧山头 → 冲灵残页<br>
+  ② 带任剑南+傅剑寒 → 铸剑山庄左侧墙壁 → <strong>冲灵剑法</strong><br>
+  ③ 水盼盼练好玉女心经+玉女剑法10重<br>
+  💡 雪地野店不能换队友，提前带好！</div>
+</div>
+
+<div class="card">
+  <h3><span class="tag m">主线</span> 雪地野店 — 观战</h3>
+  <div class="info">东渡口老船夫问路 → 雪地野店观战两大高手对决 → 回东渡口问水盼盼行踪<br>
+  💡 身上有冲灵剑法 → 荆棘对战岳在渊坚持4回合 → <strong>离坎水火剑精要</strong><br>
+  💡 还能选择：金蛇剑法精要 / 天涯明月刀精要 / 铁拳精要</div>
+</div>
+
+<div class="card">
+  <h3><span class="tag m">主线</span> 雪地练剑（三天）</h3>
+  <div class="info">⚠️ <strong>期间不能离开雪地野店换队友，提前带好！</strong><br>
+  · 必须带：<strong>萧复</strong>（与天机老道剧情，习得全真剑法）<br>
+  · 想学左右互搏必带：不动 / 古实 / 小阿曼 / 花痴（推荐小阿曼）<br>
+  · 第一天：水盼盼切磋天机老道（需玉女心法+剑法10重） → 萧复习全真剑法<br>
+  · 第二天：大师兄习得空明拳<br>
+  · 第三天：带不动/古实/小阿曼/花痴 → 领悟<strong>左右互搏</strong></div>
+</div>
+
+<div class="card missable">
+  <h3><span class="tag m">主线</span> <span class="tag x">易错过</span> 赛王府 — 杀小王爷</h3>
+  <div class="info">
+  ⚠️ <strong>进入赛王府前检查：</strong><br>
+  ① 队伍带<strong>史燕</strong>（她不需要参战，战后自动偷）<br>
+  ② 收集4张<strong>先天功残页</strong>给天机老道（否则永远拿不到先天功）<br>
+  ③ 带江瑜 → 查看桌上战马册（丐帮血案线索）<br>
+  ④ 带萧复 + 水盼盼（CP剧情）<br>
+  ⑤ 带不动/古实/小阿曼 → 左右互搏
+  </div>
+  <div class="reward"><strong>🎁</strong> 血刀经、血刀刀法<br>
+  <strong>⚠️ 史燕偷到：</strong>软猁甲、黑玉镯、铁罗汉（罗汉拳秘籍）<br>
+  <strong>⚠️ 先天功残页集齐：</strong>先天功完整秘籍</div>
+</div>
+
+<div class="card">
+  <h3><span class="tag m">主线</span> 丐帮血案完结</h3>
+  <div class="info">成都喂狗 → 杭州丐帮分舵 → 带江瑜赛王府看战马册 → 成都兽皮店唐冠南（需史燕） → 武当卓人清 → 杭州丐帮破庙</div>
+</div>
+
+<!-- ======================== PHASE 5 ======================== -->
+<div class="phase" id="p5">
+  <h2>📌 第五阶段 · 血色姻缘 & 恶人谷</h2>
+  <p class="desc">东渡口 → 东海分舵 → 杜康村 → 景阳冈 → 恶人谷 → 花族</p>
+</div>
+
+<div class="card">
+  <h3><span class="tag m">主线</span> 血色姻缘 — 东渡口救人</h3>
+  <div class="info">东渡口右侧码头接任务 → 杭州码头了解情况 → 妓院智取暗号 → 上东海分舵救人</div>
+</div>
+
+<div class="card">
+  <h3><span class="tag m">主线</span> 杜康村 + 景阳冈</h3>
+  <div class="info">杜康村救杜少镖头（陆少临被劫镖） → 景阳冈最北找史义</div>
+</div>
+
+<div class="card">
+  <h3><span class="tag m">主线</span> 洛阳 — 救熊天霸</h3>
+  <div class="info">东渡口集合 → 洛阳破庙找史义 → 青城山找诚王 → 洛阳古玩店调包救人 → 东渡口出发杀黑冢罗王</div>
+</div>
+
+<div class="card">
+  <h3><span class="tag m">主线</span> 杭州妓院 — 龙墨线</h3>
+  <div class="info">杭州妓院找龙墨 → 点苍灭门 → 上罗刹分舵复仇 → 龙墨入队</div>
+  <div class="warning">找龙墨之前，确保洛阳客栈小孟支线已完成（带沈湘云）</div>
+</div>
+
+<div class="card missable">
+  <h3><span class="tag m">主线</span> <span class="tag x">易错过</span> 恶人谷</h3>
+  <div class="info">原始森林密会 → 进入恶人谷 → 寻找心残 → 高昌遗迹杀心残 → 救夜叉<br>
+  ⚠️ <strong>恶人谷任务尽快清完！</strong>花族拜火大典后会触发色目人入侵，谷内任务全部清除！</div>
+</div>
+
+<div class="card">
+  <h3><span class="tag m">主线</span> 花族部落 — 塔娅入队</h3>
+  <div class="info">恶人谷谷口救花族族长 → 花族部落 → 招募塔娅 → 雪地野店后续 → 铁叉部附近大地图事件 → 喀什</div>
+</div>
+
+<!-- ======================== PHASE 6 ======================== -->
+<div class="phase" id="p6">
+  <h2>📌 第六阶段 · 绿柳山庄 & 终章</h2>
+  <p class="desc">修罗宫 → 绿柳山庄 → 山林地堡 → 辟邪宫决战</p>
+</div>
+
+<div class="card">
+  <h3><span class="tag m">主线</span> 修罗宫</h3>
+  <div class="info">高昌遗迹后 → 修罗宫找阿修罗下落<br>
+  ⚠️ 修罗宫开放期间 → 带沈湘云找洛翎枫 → 触发小孟后续（关闭后无法进入）</div>
+</div>
+
+<div class="card missable">
+  <h3><span class="tag m">主线</span> <span class="tag x">易错过</span> 绿柳山庄</h3>
+  <div class="info">哈什找任天翔 → 绿柳山庄营救阿修罗<br>
+  ⚠️ <strong>必须带水盼盼！</strong>触发额外剧情 → 获得<strong>倚天断剑</strong> → 回铸剑山庄 → <strong>倚天剑</strong>（水盼盼专属）<br>
+  ⚠️ <strong>救阿修罗时不杀赵龙！</strong>（否则夜叉不入队）</div>
+</div>
+
+<div class="card">
+  <h3><span class="tag r">招募</span> 夜叉入队</h3>
+  <div class="info">不杀赵龙 → 夜叉说「欠你个人情」 → 后续自动入队</div>
+</div>
+
+<div class="card missable">
+  <h3><span class="tag m">主线</span> <span class="tag x">易错过</span> 山林地堡 — 完美结局关键</h3>
+  <div class="info">
+  ⚠️ <strong>必带岳胖子 + 内功心法满级！</strong>（否则无法触发完美结局）<br>
+  带不动可触发额外对话 → 杀赛王爷 → 岳胖子离队<br>
+  山林地堡后 → 大地图触发玄铁事件 → 花50000两 → 找老胡打造玄铁武器</div>
+</div>
+
+<div class="card">
+  <h3><span class="tag m">主线</span> 决战辟邪宫</h3>
+  <div class="info">
+  洛阳江府报告 → 少林寺了解情况 → 天龙教（对战罗蛇君、龙王） → 铁叉部 → 回逍遥谷 → 卫家抄家（紫绫离队） → 辟邪宫决战<br>
+  💡 天龙教对话夜叉可入队 → 大厅右侧房间 → <strong>天龙八部剑</strong><br>
+  💡 洛阳触发剧情 → 风吹雪入队<br>
+  💡 最终战史燕不会上场，带双奶+暴力输出</div>
+</div>
+
+<!-- ======================== PHASE 7 ======================== -->
+<div class="phase" id="p7">
+  <h2>🗺️ 大地图随机事件</h2>
+  <p class="desc">以下事件在大地图闲逛时随机触发，有就做</p>
+</div>
+
+<div class="card">
+  <h3>大地图随机事件列表</h3>
+  <div class="info">
+  · 夜叉护法被少林囚禁（少林门卫打听）<br>
+  · 巩光杰借钱10000两 → 后续还千年人参<br>
+  · 帮何秋娟打天龙教杀手<br>
+  · 帮姜望打知名不具×3<br>
+  · 帮东瀛人打巨熊 → 玉蜂浆+九阴总纲<br>
+  · 帮凌香儿打罗煞 → 乌蚕背心等<br>
+  · 救状元郎 vs 信长 → 羊脂白玉碗<br>
+  · 乐山大佛附近救云游商人 → 武学残页<br>
+  · 遭遇东方未明 → 小虾米连环画<br>
+  · 野生的徐子淇 → 正气诀×6<br>
+  · 傅剑寒在队 → 杨云+傅剑寒事件<br>
+  · 燕宇对战上官雁 → 意寒神功<br>
+  · 混元功失窃事件 → 南少林后续<br>
+  · 江洋大盗循环 → 一袋赃物<br>
+  · 唐门门人循环 / 丰都鬼众循环 / 天龙教众循环<br>
+  · 东渡口门前 → 争猴子事件 → 珍贵药草<br>
+  · 玄铁事件（山林地堡后） → 花50000两买玄铁 → 老胡打造玄铁武器
+  </div>
+</div>
+
+<hr>
+
+<div class="priority-box" style="margin-top: 30px;">
+  <h3>🏆 最终检查清单（决战前）</h3>
+  <ul>
+    <li>✅ 楚绘已入队（杭州夜飘香前置完成）</li>
+    <li>✅ 先天功残页4张集齐</li>
+    <li>✅ 史燕偷到软猬甲+黑玉镯+铁罗汉</li>
+    <li>✅ 倚天断剑 → 倚天剑（水盼盼专属）</li>
+    <li>✅ 夜叉入队（未杀赵龙）</li>
+    <li>✅ 恶人谷任务已清（花族拜火大典后会被清除）</li>
+    <li>✅ 山林地堡岳胖子在队+内功满级</li>
+    <li>✅ 玄铁武器已打造（荆棘专属刀/谷月轩剑）</li>
+    <li>✅ 龙墨已入队（洛阳客栈小孟支线已完成）</li>
+    <li>✅ 修罗宫小孟后续已触发</li>
+  </ul>
+</div>
+
+<p style="text-align: center; color: var(--muted); padding: 30px 0; font-size: 0.85em;">
+  祝大侠江湖之路一帆风顺！🏮
+</p>
+
+</div>
+</body>
+</html>
