@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.venv_up/
+.venv_up2/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Local save backups (NEVER commit real game saves)
+_save_backups/
+*.bak
+*.backup_*
+Save*.Save
+SaveTitle.SaveTitle
+
+# Staging / local only
+_stage/
